@@ -1,0 +1,24 @@
+name: Deploy Website
+
+# When to run this workflow
+on:
+  push:
+    branches: [ main, master ] 
+
+# Jobs to run
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Download the code
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.PROJECT_TOKEN }}
+        publish_dir: ./
