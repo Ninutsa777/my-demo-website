@@ -61,7 +61,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-Giorgi/
 # Java
 *.class
 *.jar
